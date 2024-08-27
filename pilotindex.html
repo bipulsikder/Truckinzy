@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truckinzy Pilot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anta&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" href="./newheroimg.jpg" as="image">
+    <style>
+    
+    
+       
+        #submit-button {
+            background-color: #003b5c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #submit-button:hover {
+            background-color: #005080;
+        }
+   
+    
+        /* Hide horizontal scrollbar */
+        /* Hide horizontal scrollbar */
+        ::-webkit-scrollbar {
+            height: 0;
+            /* This hides the horizontal scrollbar */
+            width: 5px;
+            /* You can set a width to customize the vertical scrollbar */
+        }
+
+        /* Optionally style the vertical scrollbar */
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.1);
+            /* Color of the thumb */
+        }
+
+        /* Apply to elements with horizontal overflow */
+        .overflow-x-auto {
+            overflow-x: hidden;
+            /* Hide horizontal overflow */
+            overflow-y: auto;
+            /* Enable vertical overflow */
+        }
+
+
+
+        body {
+            font-family: "Ubuntu Sans", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero {
+            position: relative;
+            /* background: linear-gradient(260deg, rgba(3, 60, 31, 0.4), rgba(1, 65, 41, 0.3)), url(WhatsApp\ Image\ 2024-05-07\ at\ 11.19.05\ AM.jpeg); */
+            /* background: linear-gradient(203.15deg, #fff 29.68%, #b2b2b2 48.78%, #7e7e7e 60.61%, #545454 66.62%, #2e2e2e 89.17%),url(WhatsApp\ Image\ 2024-05-07\ at\ 11.19.05\ AM.jpeg); */
+            background: linear-gradient(203.15deg, rgba(255, 255, 255, 0.5) 29.68%, rgba(178, 178, 178, 0.5) 48.78%, rgba(126, 126, 126, 0.8) 60.61%, rgba(84, 84, 84, 0.8) 66.62%, rgba(46, 46, 46, 0.8) 89.17%), url(./newheroimage.png);
+            height: 80vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center right;
+            background-repeat: no-repeat;
+            z-index: 5;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.7;
+            background: linear-gradient(291.63deg, #fff 18.27%, #fcfcfc 35.58%, #b2b2b2 43.99%, #7d7d7d 53.85%, #545454 71.36%, #363636 87.22%);
+            mix-blend-mode: multiply;
+            background-blend-mode: multiply;
+        }
+
+        /* background: linear-gradient(260deg, #00464f, #00464f); */
+        /* background: linear-gradient(90deg, #feada6, #f5efef ); */
+        .btn {
+            font-family: "Ubuntu Sans", sans-serif;
+        }
+
+
+
+        @media screen and (max-width: 600px) {
+            .hero {
+              height: 60vh;
+                background-size: cover;
+            }
+
+            .acc-content {
+                max-height: 0;
+                transition: all 0.5s ease-in-out;
+                overflow: hidden;
+            }
+            
+
+        }
+
+
+        @media screen and (min-width: 767px) {
+            .hero {
+                height: 100vh;
+                background-size: 100% 120%;
+            }
+        }
+
+        .bg-1 {
+            background: linear-gradient();
+        }
+
+        .ajmal:hover {
+            box-shadow: 0 12px 22px 0 rgba(0, 0, 0, 0.07);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        [x-cloak] {
+            display: none;
+        }
+
+        .width {
+            width: calc(100% - 70px);
+        }
+
+        .box-our-services {
+            box-shadow: 3px 3px 3px #5a5a5a;
+        }
+        
+        .success-message, .error-message {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .success-message {
+            color: green;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body x-data="{stickMenu:false,showToggle:false,
+    showId:false,setLang:true,
+    runHindi:function(){
+    this.showId=true;
+    this.setLang=false
+},
+runEnglish:function(){
+    this.showId=false;
+    this.setLang=true
+},
+runToggle:function(){
+   this.showId=!this.showId;
+   this.setLang=!this.setLang;
+}
+}" @scroll.window="window.pageYOffset>=70 ?stickMenu=true:stickMenu=false" x-cloak>
+
+
+    <!-- *********   english section  start *********** -->
+    <div :class="stickMenu===true?'bg-[#333333]':'bg-[#333333]'" class="conta z-50 fixed top-0 left-0 w-[100%]">
+        <div class="nav w-[100%] flex justify-between   items-center  lg:py-2  lg:h-[55px] lg:px-10  relative">
+            <!-- menu-bar icon -->
+            <div class=" absolute top-0 left-0 w-[100%] h-[100vh]   " x-show="showToggle == true"
+                x-transition:enter="transform transition ease-in-out duration-500 "
+                x-transition:enter-start="translate-x-[-100%] duration-500 opacity-0"
+                x-transition:enter-end="translate-x-[0%] opacity-100 duration-500"
+                x-transition:leave="transform transition ease-in-out duration-500"
+                x-transition:leave-start="translate-x-[0%] " x-transition:leave-end="translate-x-[-100%] ">
+                <div @click.away="showToggle=false"
+                    class="text-black transform transition-all  bg-white w-[90%]  absolute top-[0px] z-40 left-0   h-screen lg:hidden">
+                    <ul x-show="showId==false" class="  w-[90%] flex flex-col mt-20 gap-5">
+                        <li class="border-b   pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]" href="#services"
+                                @click="showToggle=false">For Truck Owner</a>
+                        </li>
+                        <li class="border-b   pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]" href="#pilot"
+                                @click="showToggle=false">Truckinzy
+                                Pilot</a></li>
+                        <li class="border-b  pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="/allblogs.html" @click="showToggle=false" target="_blank">Blog
+                            </a></li>
+                        <li class="border-b  pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="#contact-us" @click="showToggle=false">Contact
+                                Us</a></li>
+                                <div class="flex flex-col gap-3 ml-4 ">
+                                    <a href="" class="bg-[#f6660b] border border-black font-bold text-center rounded-full px-6 py-2" >
+                                        <p href="">Get Started</p>
+                                    </a>
+                                    <a href="" class=" border border-black bg-white text-black hover:bg-[#f6660b] text-center font-bold rounded-full px-6 py-2">
+                                        <p >Sign In</p>
+                                    </a>
+                                    
+                                </div>
+                    </ul>
+                    <ul x-show="showId==true" class="  w-[90%] flex flex-col mt-20 gap-5">
+                        <li class="border-b   pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="#services-hindi" @click="showToggle=false">ट्रक मालिक के लिए</a>
+                        </li>
+                        <li class="border-b   pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="#pilot-hindi" @click="showToggle=false">ट्रकिन्ज़ी पायलट</a></li>
+                        <li class="border-b  pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="/allblogs.html" @click="showToggle=false" target="_blank">ब्लॉग</a></li>
+                        <li class="border-b  pb-4"><a class="mx-5 py-[20px]  font-bold text-[#232f3e]"
+                                href="#contact-us-hindi" @click="showToggle=false">संपर्क करें</a></li>
+                                    <div class="flex flex-col gap-3 ml-4 ">
+                                        <a href="" class="bg-[#f6660b] border border-black font-bold text-center rounded-full px-6 py-2" >
+                                            <p href="">Get Started</p>
+                                        </a>
+                                        <a href="" class=" border border-black bg-white text-black hover:bg-[#f6660b] text-center font-bold rounded-full px-6 py-2">
+                                            <p >Sign In</p>
+                                        </a>
+                                        
+                                    </div>
+                    </ul>
+
+
+                    <svg @click="showToggle = false" class="absolute top-10 right-10 cursor-pointer"
+                        xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="lg:hidden p-5 relative z-[10000]" @click="showToggle=true">
+                <svg @click="isShow = true" xmlns="http://www.w3.org/2000/svg" fill="none" width="28" height="28"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+                </svg>
+
+
+            </div>
+
+            <!-- end of menu-bar icon -->
+            <!-- Image  -->
+            <div class="flex-1 flex max-sm:justify-center max-sm:ml-[-50px] lg:justify-start ">
+                <div class="w-32 ">
+                    <a href="/"> <img class="h-full w-full cursor-pointer " src="newlogo-1.png" alt=""></a>
+                </div>
+                <div x-show="showId==false" class="flex gap-4 items-center text-white max-md:hidden ">
+                    <p x-show="setLang"><a class=" py-[10px] hover:border-b-[3px]  text-[16px] ml-4 " href="#services">For Truck
+                            Owner</a>
+                           
+                    </p>
+                    <p x-show="!setLang"><a class=" py-[10px] hover:border-b-[3px] text-[16px] " href="#services-hindi">ट्रक मालिक के
+                        लिए</a>
+                    </p>
+                    <p x-show="setLang" class="">
+                        <a class=" py-[10px] hover:border-b-[3px]  text-[16px]" href="#pilot">Truckinzy
+                            Pilot</a>
+                        
+                    </p>
+                    <p x-show="!setLang">    <a class=" py-[10px] hover:border-b-[3px]  text-[16px]" href="#pilot-hindi">ट्रकिन्ज़ी पायलट</a>
+                    </p>
+                    <p x-show="setLang">
+                        <a class=" py-[10px] hover:border-b-[3px]   text-[16px]" href="/allblogs.html"
+                            target="_blank">Blog</a> </p>
+                    <p x-show="!setLang">
+                        <a class=" py-[10px] hover:border-b-[3px]  text-[16px]" href="/allblogs.html"
+                        target="_blank">ब्लॉग</a>
+                    </p>    
+                   
+                    <p x-show="setLang">
+                        <a class=" py-[10px] hover:border-b-[3px]   text-[16px] lg:mr-5 " href="#contact-us">Contact
+                            Us</a>
+                          
+                    </p>
+                    <p x-show="!setLang">
+                        <a class=" py-[10px] hover:border-b-[3px]  text-[16px] lg:mr-5" href="#contact-us-hindi">संपर्क
+                            करें</a>
+                       </p>
+                </div>
+                <div x-show="showId==true" class="flex gap-4 items-center max-md:hidden text-white">
+                    <p><a class=" py-[10px] hover:border-b-[3px] text-[16px] ml-4 " href="#services-hindi">ट्रक मालिक के
+                            लिए</a>
+                    </p>
+                    <p><a class=" py-[10px] hover:border-b-[3px]  text-[16px]" href="#pilot-hindi">ट्रकिन्ज़ी पायलट</a>
+                    </p>
+                    <p><a class=" py-[10px] hover:border-b-[3px]  text-[16px]" href="/allblogs.html"
+                            target="_blank">ब्लॉग</a>
+                    </p>
+                    <p><a class=" py-[10px] hover:border-b-[3px]  text-[16px] lg:mr-5" href="#contact-us-hindi">संपर्क
+                            करें</a>
+                    </p>
+                </div>
+                <!-- end of image -->
+                <!-- nav ul  -->
+
+               
+                <nav class="text-[#ffffff] max-lg:hidden lg:flex lg:gap-5 flex-1  lg:justify-end">
+
+
+                    <div x-show="showId==false" class="flex gap-4 items-center  ">
+
+                    </div>
+            </div>
+           
+
+            <div class="flex items-center ">
+                <a :class="setLang==true?'border-b-2':''" @click="runEnglish"
+                    class=" py-[10px] hover:border-b-[3px]  text-[16px] text-white" href="#">Eng</a>
+                <div @click="runToggle" :class="setLang==true?'justify-start':'justify-end'"
+                    class="flex  w-[35px] rounded-lg border-2 mx-2">
+                    <p class="w-4 h-4 rounded-full bg-white"></p>
+                </div>
+
+                <a :class="setLang==false?'border-b-2':''" @click="runHindi"
+                    class=" py-[10px] hover:border-b-[3px]  text-[16px] text-white" href="#">हिन्दी</a>
+            </div>
+
+            <!-- ************** -->
+            <div class="max-md:hidden lg:block">
+                <div class="flex gap-3 ml-4 ">
+                    <a href="" class="bg-[#f6660b] font-bold text-white rounded-full px-6 py-2" >
+                        <p href="">Download The App</p>
+                    </a>
+                    <!--<a href="" class="bg-white hover:bg-[#f6660b] text-black font-bold rounded-full px-6 py-2">-->
+                    <!--    <p >Download The App</p>-->
+                    <!--</a>-->
+                </div>
+            </div>
+            <!-- ***************** -->
+            </nav>
+
+        </div>
+    </div>
+    <div x-show="showId===false ">
+        <!-- ****************************** hero text start ****************************** -->
+
+        <div class="hero flex flex-col justify-center ">
+
+            <div class="max-xl:px-8 xl:px-16">
+                <div class=" ">
+                    <h1
+                        class="relative z-10 max-sm:text-[24px]  max-md:text-[28px] max-lg:text-[45px] lg:text-[62px] text-white font-bold capitalize tracking-wide lg:mb-5 	">
+                        Find Truck Driving Jobs </h1>
+                    <h1
+                        class="relative z-10 max-sm:text-[24px] max-md:text-[28px] max-lg:text-[45px] lg:text-[62px] text-white font-bold capitalize leading-[33px] lg:mb-10 ">
+                        near you today</h1>
+                    <h2
+                        class="relative z-10 max-sm:text-[14px] max-sm:mt-5 max-md:text-[16px] max-lg:text-[18px] lg:text-[24px] font-bold text-white max-sm:max-w-[400px] lg:max-w-[800px]">
+                        Work on your terms. Truckinzy gives you the freedom and control to find the right truck driving
+                        job
+                        best suited to your experience, location and time period.</h2>
+                    <div
+                        class="btn bg-[#e15200] z-[9999999] relative text-white flex items-center gap-1 w-fit px-3 mt-10">
+                        <button class="py-3" type="button">Become Truckinzy Pilot</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-arrow-right">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- ********************************* hero text End ******************************************** -->
+
+
+        <!-- ********************************* freedom control section start ********************************* -->
+
+        <div class="  bg-[#f7f8f9] flex flex-col justify-center py-10 ">
+            <h1
+                class="text-center text-lg sm:text-[20px] md:text-[24px]  lg:text-[28px] sm:pb-[25px] md:pb-[30px] lg:pb-[10px] pb-5   ">
+                Freedom & Control</h1>
+            <h1
+                class="text-center text-xl sm:text-[25px] md:text-[30px]  lg:text-[40px] sm:pb-[25px] md:pb-[30px] lg:pb-[10px] pb-5 font-bold lg:mt-10 ">
+                Why Drive with Us?</h1>
+            <div class="   flex h-full  mx-auto   items-center mt-[60px]  ">
+                <div
+                    class="main flex  lg:max-w-[1020px] xl:max-w-[1020px]  flex-wrap  mx-auto justify-center lg:gap-8 max-sm:gap-4  lg:flex-row items-center max-sm:gap-10 text-[#232f3e]  ">
+
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff]">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <clipPath id="a">
+        <path d="m0 0h32.332v26.806h-32.332z" />
+    </clipPath>
+    <path
+        d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+        fill="#96a9b8" opacity=".388"
+        transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+    <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+    <!--    <path-->
+    <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+    <!--        fill="#001f37" />-->
+    <!--</g>-->
+    <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/Group-1378.svg" />
+</svg>
+
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] lg:whitespace-nowrap  ">
+                            Job Placement Assistance
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-extrabold lg:text-[16px]  whitespace-nowrap text-white ">Job
+                            Placement
+                            Assistance
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> We help match
+                            you
+                            with suitable job opportunities based
+                            on your skills and preferences</p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff] ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_calendar.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            Own Your Schedule </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            Own Your
+                            Schedule </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white">Customize your
+                            driving schedule to suit your lifestyle,
+                            whether it's day, night, or alternating shifts.</p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff]">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <g clip-path="url(#a)" transform="translate(0 1.156)">
+                                <path
+                                    d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"
+                                    fill="#001f37" />
+                            </g>
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            Get Paid Instantly </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            Get Paid
+                            Instantly
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> No more waiting
+                            for
+                            your hard-earned money. With our
+                            Instant Pay feature, receive your earnings immediately after completing a job.</p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff] ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2024/03/Group-Senior.svg" />
+                            
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] lg:whitespace-nowrap  ">
+                            Health and Medical schemes
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            Health and Medical schemes
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> Benefit from
+                            our health and medical schemes designed to ensure the safety and well-being of you and your
+                            family.</p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff]">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_active.svg" />
+                            
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] lg:whitespace-nowrap  ">
+                            Family Welfare & Rewards:
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            Family
+                            Welfare & Rewards:
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px]  font-bold mt-3 text-white"> Enjoy benefits
+                            that extend to your loved ones, plus
+                            exciting incentives for your hard work.
+                        </p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] bg-[#fff]">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_team.svg" />
+                            
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            Legal Support
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white  ">
+                            Legal
+                            Support:
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white "> Access
+                            professional legal assistance whenever you need
+                            it, ensuring peace of mind on the road.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************* freedom control section end   **************************** -->
+
+        <!-- ********************************* GETTING STARTED SECTION START **************************** -->
+
+        <section id="services1" x-data="{id:1,x:0}"
+            class=" relative lg:max-w-[1020px]  lg:mx-auto lg:py-[72px] max-sm:py-12 max-sm:px-4 ">
+            <div class="btn flex lg:mb-[72px] max-sm:mb-12  ">
+                <div @click="id=1" :class="id==1 ? 'bg-black text-white' :'bg-white text-black'"
+                    class="border border-black">
+                    <button class="px-3 py-2 font-bold max-sm:text-[14px]" type="button">GETTING STARTED</button>
+                </div>
+                <div @click="id=2" :class="id==2 ? 'bg-black text-white' :'bg-white text-black'"
+                    class="border border-black">
+                    <button class="px-3 py-2 font-bold max-sm:text-[12px] " type="button">ADDITIONAL INFO</button>
+                </div>
+            </div>
+            <div class="  ">
+                <h1 class="font-bold lg:text-[#7a6161] text-[14px]">WORK ON YOUR TERMS</h1>
+                <h1 class="font-bold lg:text-[36px] max-sm:text-[26px] max-sm:my-2 lg:mb-5">How it Works</h1>
+            </div>
+            <div class="">
+                <div x-show="id===1" class="flex max-sm:flex-col gap-10  lg:pl-12   ">
+                    <div class="flex-1 max-sm:order-2 space-y-8 max-w-[600px] ">
+                        <div class="p">
+                            <h1 @mouseEnter="x=0" class="font-bold text-[20px]">Create Your profile</h1>
+                            <p class="font-medium">Start by creating your profile through call or our mobile
+                                application.
+                                It's
+                                quick and easy,
+                                requiring
+                                just a few simple steps to get started.
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1  @mouseEnter="x=1" class="font-bold text-[20px]">Training session, and verification</h1>
+                            <p class="font-medium">Attend a comprehensive training session to familiarise yourself with
+                                our
+                                platform and policies.
+                                Once
+                                completed, we'll verify your credentials to ensure a seamless onboarding process.
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=2" class="font-bold text-[20px]">Stay Updated on Job Opportunities </h1>
+                            <p class="font-medium">Receive real-time updates about available job opportunities directly
+                                on
+                                your
+                                mobile application
+                                and
+                                via WhatsApp. Stay informed about new opportunities as they arise, keeping you ahead of
+                                the
+                                game
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1  @mouseEnter="x=3" class="font-bold text-[20px]">Accept jobs instantly</h1>
+                            <p class="font-medium">With Truckinzy, you have the power to accept jobs instantly. When you
+                                receive
+                                a job offer that
+                                fits
+                                your schedule and preferences, simply accept it with a tap of a button and get ready to
+                                hit
+                                the
+                                road.
+                            </p>
+                        </div>
+                        <div class="btn bg-[#3c3838] text-white flex items-center gap-1 w-fit px-3 cursor-pointer">
+                            <button class=" py-2" type="button">FIND WORK NOW</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                   
+                    <div class="max-sm:flex-1 flex justify-center">
+                        <div class="max-sm:order-1 relative ">
+                            <div class="relative ">         <img class=" lg:w-[255px] max-sm:w-[198px] " src="Phone-mockup-v3_om.png" alt=""></div>
+                            <div class=" absolute lg:top-[12px] lg:left-[14px] max-sm:top-[0] max-sm:left-[0] flex gap-2">
+                            
+                                <template  x-if="x === 0">
+                                    <div x-show="x===0" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%] max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-1.jpeg" alt="">
+                                    </div>
+                                </template> 
+                                <template x-if="x === 1">
+                                    <div x-show="x===1" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[493px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-2.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x === 2">
+                                    <div x-show="x===2" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-3.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x ===3">
+                                    <div x-show="x===3" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[96%]  max-sm:h-[90%] max-sm:mx-auto">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-4.jpg" alt="">
+                                    </div>
+                                </template>
+                             </div>
+                        </div>
+                       
+                </div>
+                </div>
+                <div x-show="id===2" class="flex max-sm:flex-col gap-10 pl-12 lg:max-w-[1230px] lg:mx-auto ">
+                    <div class=" flex-1 max-sm:order-2 space-y-8  max-w-[600px]    ">
+                        <div class="p">
+                            <h1 @mouseEnter="x=0" class="font-bold text-[20px]">Build trust</h1>
+                            <p class="font-medium">we prioritize building trust and maintaining transparent
+                                relationships
+                                with
+                                our drivers. Rest assured, you're part of a reliable and trustworthy platform.
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=1" class="font-bold text-[20px]">Get paid fast
+                            </h1>
+                            <p class="font-medium">Say goodbye to waiting weeks for your earnings. With Truckinzy,
+                                you'll
+                                get
+                                paid quickly and securely, ensuring your hard work is rewarded promptly.
+
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=2" class="font-bold text-[20px]">Wallets & Ledgers
+                            </h1>
+                            <p class="font-medium">Manage your finances effortlessly with our integrated wallets and
+                                ledgers
+                                feature. Keep track of your earnings, expenses, and transactions with ease, all within
+                                the
+                                Truckinzy platform.
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=3" class="font-bold text-[20px]">Contact us through mobile application
+                            </h1>
+                            <p class="font-medium">Need assistance or have questions? Reach out to us directly through
+                                our
+                                mobile application. Our dedicated support team is here to help you every step of the
+                                way.
+                            </p>
+                        </div>
+
+                        <div class="btn bg-[#3c3838] text-white flex items-center gap-1 w-fit mt-8 px-3">
+                            <button class=" py-2" type="button">FIND WORK NOW</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                   
+                    <div class="max-sm:flex-1 flex justify-center  ">
+                        <div class="max-sm:order-1 relative ">
+                            <div class="relative ">         <img class=" lg:w-[255px] max-sm:w-[198px] " src="Phone-mockup-v3_om.png" alt=""></div>
+                            <div class=" absolute lg:top-[12px] lg:left-[14px] max-sm:top-[0] max-sm:left-[0] flex gap-2">
+                            
+                                <template  x-if="x === 0">
+                                    <div x-show="x===0" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%] max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-1.jpeg" alt="">
+                                    </div>
+                                </template> 
+                                <template x-if="x === 1">
+                                    <div x-show="x===1" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[493px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-2.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x === 2">
+                                    <div x-show="x===2" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-3.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x ===3">
+                                    <div x-show="x===3" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[96%]  max-sm:h-[90%] max-sm:mx-auto">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-4.jpg" alt="">
+                                    </div>
+                                </template>
+                             </div>
+                        </div>
+                       
+                </div>
+                </div>
+                
+        </section>
+
+        <!-- ********************************* GETTING STARTED SECTION END   **************************** -->
+
+
+        <!-- **************************  interested in full/part-time job section start *********************** -->
+
+        <section class="bg-[#2c2e5c] flex items-center  flex-col py-20 space-y-6">
+            <h1 class="text-center lg:text-[45px] text-white font-extrabold">Interested in full/part-time jobs?
+
+            </h1>
+            <h1 class=" text-center text-white lg:text-[20px] font-bold">Connect with Truckinzy
+
+            </h1>
+            <div class="btn bg-[#e83e3e] rounded-sm text-white flex items-center  justify-center gap-1 w-fit px-3 ">
+                <button class=" py-2 " type="button">Register as Truckinzy Pilot
+                </button>
+            </div>
+        </section>
+
+        <!-- *******************  interested in full/part-time job section end  ********************** -->
+
+
+        <!-- ****************************** RESOURCES MADE FOR YOU section start  ********************* -->
+
+
+        <!--<div class="bg-gray-400">-->
+        <!--    <section class=" lg:max-w-[1020px] mx-auto ">-->
+        <!--        <h1 class="text-black text-[14px] text-center mt-5 font-medium ">RESOURCES MADE FOR YOU-->
+        <!--        </h1>-->
+        <!--        <h1 class="text-black font-bold lg:text-[45px] max-sm:text-[25px] mb-[44px]  text-center">Need some-->
+        <!--            extra-->
+        <!--            help?-->
+        <!--        </h1>-->
+        <!--        <h1 class="font-bold text-[12px]  max-sm:text-center max-sm:font-extrabold max-sm:text-[20px]">HAVE-->
+        <!--            QUESTIONS</h1>-->
+        <!--        <section class=" max-sm:px-4 flex flex-col  max-sm:gap-3  lg:mx-auto justify-center  ">-->
+        <!--            <div class="  flex max-sm:flex-col lg:flex-row items-center gap-10">-->
+
+
+        <!--                <p class="lg:max-w-[900px] max-sm:text-center mt-3">Whether you're setting up your profile,-->
+        <!--                    figuring-->
+        <!--                    out how to use the app, or understanding how to get paid, the Truckinzy Help Center provides-->
+        <!--                    the-->
+        <!--                    essential information for success with our platform. If you still have questions, fill out-->
+        <!--                    the-->
+        <!--                    Contact Support form, and we'll assist you further.</p>-->
+        <!--                <div class="flex gap-3 mb-5 flex-col ">-->
+        <!--                    <div-->
+        <!--                        class="btn-1 gap-1 max-w-[300px] bg-black flex justify-center w-fit items-center text-white cursor-pointer px-3">-->
+        <!--                        <button class="py-3 text-[12px] font-bold whitespace-nowrap" type="button">SCHEDULE-->
+        <!--                            A CALL</button>-->
+        <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"-->
+        <!--                            fill="none" stroke="white" stroke-width="2" stroke-linecap="round"-->
+        <!--                            stroke-linejoin="round" class="feather feather-arrow-right">-->
+        <!--                            <line x1="5" y1="12" x2="19" y2="12"></line>-->
+        <!--                            <polyline points="12 5 19 12 12 19"></polyline>-->
+        <!--                        </svg>-->
+        <!--                    </div>-->
+        <!--                    <div-->
+        <!--                        class="btn-1 max-w-[300px]  gap-1  flex justify-center items-center text-black border border-black cursor-pointer px-3">-->
+        <!--                        <button class="py-3  text-[12px]  font-bold whitespace-nowrap  " type="button">HELP-->
+        <!--                            CENTER</button>-->
+        <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"-->
+        <!--                            fill="none" stroke="black" stroke-width="2" stroke-linecap="round"-->
+        <!--                            stroke-linejoin="round" class="feather feather-arrow-right">-->
+        <!--                            <line x1="5" y1="12" x2="19" y2="12"></line>-->
+        <!--                            <polyline points="12 5 19 12 12 19"></polyline>-->
+        <!--                        </svg>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
+        <!--    </section>-->
+        <!--</div>-->
+        
+        
+        <section class="lg:max-w-[1020px] lg:mx-auto py-10">
+    <h1 class="text-center lg:text-[45px] text-black font-extrabold">Pilot Application Form</h1>
+    <form id="contact-form-hindi" class="grid gap-10 max-sm:grid-cols-1 lg:grid-cols-2 px-4 py-4" action="https://script.google.com/macros/s/AKfycbzd3zaJkTO_qBlRurGR4iLeqTdXBCndiGm2lZGDLIJ9I2A1eF8yVaAKNVJ8qsYGfA/exec" method="POST">
+        <input type="hidden" name="formType" value="hindi">
+      <div class="flex flex-col">
+            <label class="font-bold" for="first-name">FIRST NAME *</label>
+            <input id="first-name" name="first-name" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="last-name">LAST NAME *</label>
+            <input id="last-name" name="last-name" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="license">Driving Licence No *</label>
+            <input id="license" name="license" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="phone">PHONE NUMBER *</label>
+            <input id="phone" name="phone" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="city">CITY *</label>
+            <input id="city" name="city" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold mb-2" for="state">STATE *</label>
+            <select id="state" name="state" class="text-[20px] bg-[#f7f8f8] py-4" required>
+                <option value="">Please Select</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+            </select>
+        </div>
+        <div class="bg-[#003b5c] text-white mt-[50px] w-fit">
+            <button id="submit-button" class="py-[10px] px-[20px] text-center rounded" type="submit">SUBMIT</button>
+        </div>
+    </form>
+    <div id="notification" class="hidden text-center text-green-500 mt-4">Form submitted successfully!</div>
+
+    <script>
+        const formHindi = document.getElementById('contact-form-hindi');
+        const notification = document.getElementById('notification');
+
+        formHindi.addEventListener('submit', function (e) {
+            e.preventDefault();
+            fetch(formHindi.action, {
+                method: 'POST',
+                body: new FormData(formHindi)
+            }).then(response => {
+                if (response.ok) {
+                    notification.classList.remove('hidden');
+                    setTimeout(() => {
+                        notification.classList.add('hidden');
+                        formHindi.reset();
+                    }, 3000);
+                } else {
+                    console.error('Form submission failed.');
+                }
+            }).catch(error => {
+                console.error('Error!', error.message);
+            });
+        });
+    </script>
+</section>
+
+    
+        
+        
+        
+        
+        
+
+
+
+        <!-- ****************************** RESOURCES MADE FOR YOU section end ********************* -->
+
+        <!--************************ footer   section start********************************* -->
+        <section id="contact-us" class="bg-[#333333] ">
+        <section class=" px-10 max-md:py-4 mt-28 lg:py-8 flex flex-col lg:gap-14 max-md:gap-5  md:flex-row lg:mx-auto  ">
+            <div class="main-1 lg:flex ">
+                <div class=" flex-1  mt-[20px] ">
+                    <div class="">
+                        <div class="w-60 h-14  ">
+                            <img class="cursor-pointer h-full lg:mt-[-15px]" src="newlogo-1.png" alt="">
+                        </div>
+                        <div class=" mt-5 ">
+                            <!-- <div class="">
+                                <h1 class="text-[#ffffff] font-bold ">About Us</h1>
+
+                            </div> -->
+                            <p class="text-[#ffffff] text-[15px] cursor-pointer  max-w-[30ch]  ">Truckinzy
+                                revolutionizes transportation with on-demand truck driver solutions. Founded by
+                                industry
+                                enthusiast, we bridge the gap between businesses and skilled drivers, redefining
+                                logistics..
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div x-data="{showIcon1:false,showIcon2:false,isShow:false}"
+                class="main-2 lg:flex flex-1 lg:text-center ">
+                <div class="flex-1  text-white  ">
+                    <div class="flex justify-between  ">
+                        <a href="#services" class="cursor-pointer font-bold lg:inline-block lg:mx-auto">FOR TRUCK
+                            OWNER </a>
+                        <div class="relative lg:hidden">
+                            <p x-show="!showIcon1" @click="showIcon1 = !showIcon1"> <svg
+                                    class="w-4 h-4 absolute top-0 left-0 fill-white"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                </svg></p>
+                            <p @click="showIcon1 = !showIcon1" x-show="showIcon1"> <svg
+                                    class="w-4 h-4 fill-white absolute top-0 left-0"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                                </svg>
+                        </div>
+                    </div>
+                    <div class="acc-content" x-ref="container1"
+                        :style="showIcon1==true ? 'max-height: '+ $refs.container1.scrollHeight + 'px' : '' ">
+                        <a href="#pilot" class="mt-3 cursor-pointer block ">Truckinzy Pilot</a>
+                        <a href="/allblogs.html" class="mt-3 cursor-pointer block " target="_blank">Our Blog</a>
+
+                        <p class=" mt-3 cursor-pointer ">Contact Us</p>
+                        <p class="mt-3 cursor-pointer ">Language</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-1 ">
+                <h1 class="text-[#ffffff] text-md font-bold">DOWNLOAD THE APP</h1>
+                <p class="text-[#ffffff] mt-3 font-bold">HIRE WORKERS
+                </p>
+                <div class="flex gap-3 mt-3">
+                    <div class="  ">
+                        <a href="#"><img class=" h-[33.99px] object-cover" src="./google-play-badge-1.webp"
+                                alt=""></a>
+                    </div>
+                    <div class=" ">
+                        <a href="#"> <img class="  h-[33.99px] object-cover" src="./app-store-badge.webp"
+                                alt=""></a>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-[#ffffff] text-md font-bold mt-3">FIND WORK</h1>
+                    <div class="flex gap-3 mt-3">
+                        <div class=" ">
+                            <a href="#"> <img class="  h-[33.99px] object-cover" src="./google-play-badge-1.webp"
+                                    alt=""></a>
+                        </div>
+                        <div class="  h-[33.99px]  ">
+                            <a href="#"><img class=" h-[33.99px] object-cover" src="./app-store-badge.webp"
+                                    alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="flex-1 ">
+                    <h1 class="text-[#ffffff] text-md font-bold uppercase">Connect with us</h1>
+                    <p class="text-[#ffffff] mt-3">Email: <span
+                            class="text-[#ffffff]  cursor-pointer">business@truckinzy.com</span>
+                    </p>
+                    <p class="text-[#ffffff] max-w-[320px] mt-3">Address: <span class="text-[#ffffff] ">TDI mall,
+                            4th floor, Rajouri Garden, New Delhi</span>
+                    </p>
+                    <div class="flex items-center gap-3 mt-3 mb-5 ">
+                        <svg class="w-8 h-8 fill-none  stroke-white stroke-[25px]"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                        </svg>
+                        <div class="div">
+                            <p class="text-white">Call us now</p>
+                            <p class="text-white ">+91 9911022107</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 mt-5"> <a href="https://www.facebook.com/truckinzy.technology">
+                            <svg class="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/truckinzy/">
+                            <svg class="w-4 h-4  fill-white " xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512">
+                                <path
+                                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFlyU-XXTBpIQAAAY9hayGQSDNqSz5Ct63KJLggK2s02LJALP7wUVuEyjAUF_PDiht-WhmTYaYvhwidVnYOt2v7DCTMSITmjOuj_Gm8pJupR702z0eDYft3xUObuqUDU2IAxN0=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftruckinzy%2F">
+                            <svg class="w-4 h-4 fill-white " xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512">
+                                <path
+                                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="text-white flex lg:flex-row max-md:flex-col justify-between w-full  px-10 max-md:py-4 lg:py-6">
+            <div class="flex  lg:justify-center lg:items-center max-md:order-2">
+                <h1>2024 Truckinzy. ALL RIGHTS RESERVED.</h1>
+            </div>
+
+
+            <div class=" flex gap-5 max-md:order-1 ">
+                <a href="/pilottnc.html"  class="max-md:mb-3 cursor-pointer block  " target="_blank">Terms and
+                    Conditions</a>
+                <a href="/privacy.html" class="max-md:mb-3 cursor-pointer block  " target="_blank">Privacy
+                    Policy
+                </a>
+                <a href="/refund.html">
+                    <p class=" max-md:mb-3 cursor-pointer  ">Refund Policy</p>
+                </a>
+
+
+            </div>
+        </div>
+    </section>
+    </div>
+    <!--************************ footer   section end   ********************************* -->
+    <div x-show="showId===true">
+        <div class="hero flex flex-col justify-center ">
+
+            <div class="max-xl:px-8 xl:px-16">
+                <div class=" ">
+                    <h1
+                        class="relative z-10 max-sm:text-[24px]  max-md:text-[28px] max-lg:text-[45px] lg:text-[62px] text-white font-bold capitalize tracking-wide lg:mb-5 	">
+                        आज ही अपने आस-पास </h1>
+                    <h1
+                        class="relative z-10 max-sm:text-[24px] max-md:text-[28px] max-lg:text-[45px] lg:text-[62px] text-white font-bold capitalize leading-[33px] lg:mb-10 ">
+                        ट्रक चालक की नौकरियाँ खोजें</h1>
+                    <h2
+                        class="relative z-10 max-sm:text-[14px] max-sm:mt-5 max-md:text-[16px] max-lg:text-[18px] lg:text-[24px] font-bold text-white  max-sm:max-w-[400px] lg:max-w-[800px] ">
+                        अपनी शर्तों पर काम करें। Truckinzy आपको आपके अनुभव, स्थान और समय अवधि के अनुसार सही ट्रक चालक
+                        नौकरी
+                        ढूंढने की आजादी और नियंत्रण प्रदान करता है।</h2>
+                    <div
+                        class="btn bg-[#e15200] z-[9999999] relative text-white flex items-center gap-1 w-fit px-3 mt-10">
+                        <button class="py-3" type="button">हमसे संपर्क करें</button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-arrow-right">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- ********************************* hero text End ******************************************** -->
+
+
+        <!-- ********************************* freedom control section start ********************************* -->
+
+        <div class=" bg-[#f7f8f9]  flex flex-col justify-center py-10 ">
+            <h1
+                class="text-center text-lg sm:text-[20px] md:text-[24px]  lg:text-[28px] sm:pb-[25px] md:pb-[30px] lg:pb-[10px] pb-5   ">
+                स्वतंत्रता और नियंत्रण
+            </h1>
+            <h1
+                class="text-center text-xl sm:text-[25px] md:text-[30px]  lg:text-[40px] sm:pb-[25px] md:pb-[30px] lg:pb-[10px] pb-5 font-bold lg:mt-10 ">
+                हमारे साथ चलने का कारण?</h1>
+            <div class="   flex h-full  mx-auto   items-center mt-[60px]  ">
+                <div
+                    class="main flex  lg:max-w-[1020px] xl:max-w-[1020px]  flex-wrap  mx-auto justify-center lg:gap-8 max-sm:gap-4  lg:flex-row items-center max-sm:gap-10 text-[#232f3e] ">
+
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px] bg-[#fff] hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px] xl:max-w-[350px] items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px]  ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/Group-1378.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            नौकरी स्थानन सहायता
+
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-extrabold lg:text-[16px] whitespace-nowrap text-white ">नौकरी
+                            स्थानन
+                            सहायता
+
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> हम आपके कौशल और
+                            पसंदों के आधार पर उपयुक्त नौकरी के अवसर के साथ मिलते हैं।</p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  bg-white hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px]   items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] xl:max-w-[350px]  ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_calendar.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            अपने समय का मालिक बनें
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            अपने समय का मालिक बनें
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white">अपने जीवनशैली के
+                            अनुसार अपना ड्राइविंग समय अनुकूलित करें, चाहे दिन हो या रात, या फिर बदलते प्रतिदिन के काम।
+                        </p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello justify-center cursor-pointer  flex-col  rounded-[16px]  bg-white hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px]    items-center  max-sm:p-4 lg:p-12 xl:p-18 h-[180px] xl:max-w-[350px]">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <g clip-path="url(#a)" transform="translate(0 1.156)">
+                                <path
+                                    d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"
+                                    fill="#001f37" />
+                            </g>
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            तुरंत पैसा पाएं
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            तुरंत पैसा पाएं
+
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> अब अपने मेहनत
+                            के
+                            पैसे के लिए और इंतजार नहीं करना पड़ेगा। हमारे तत्काल भुगतान की सुविधा के साथ, नौकरी पूरी
+                            करने के
+                            बाद अपनी कमाई को तुरंत प्राप्त करें।
+                        </p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  bg-white hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px]   items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] xl:max-w-[350px] ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2024/03/Group-Senior.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] lg:whitespace-nowrap  ">
+                            स्वास्थ्य और चिकित्सा योजनाएँ
+
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            स्वास्थ्य और चिकित्सा योजनाएँ
+
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white"> हमारी स्वास्थ्य
+                            और चिकित्सा योजनाएँ आपकी और आपके परिवार की सुरक्षा और भलाई सुनिश्चित करने के लिए बनाई गई
+                            हैं।
+                        </p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  bg-white hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px]   items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] xl:max-w-[350px] ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_active.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] lg:whitespace-nowrap  ">
+                            परिवार की भलाई और पुरस्कार
+
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white ">
+                            परिवार की भलाई और पुरस्कार
+
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px]  font-bold mt-3 text-white"> अपने प्यारे
+                            लोगों
+                            को लाभ मिले, और अपनी मेहनत के लिए रोमांचक प्रोत्साहन पाएं।
+
+                        </p>
+                    </div>
+                    <div x-data="{hoverText:false}" @mouseenter="hoverText=true" @mouseleave="hoverText=false"
+                        class="flex hello  justify-center cursor-pointer  flex-col  rounded-[16px]  bg-white hover:bg-[#001f37d9] inset-1 shadow-lg lg:flex-1 max-sm:w-[180px] lg:max-w-[333px]   items-center max-sm:p-4 lg:p-12 xl:p-18 h-[180px] xl:max-w-[350px] ">
+                        <svg x-show="hoverText==false" height="40.974" viewBox="0 0 45.106 40.974" width="45.106"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <clipPath id="a">
+                                <path d="m0 0h32.332v26.806h-32.332z" />
+                            </clipPath>
+                            <path
+                                d="m.872 20.975c1.55 6.662 3.268 15.831 10.58 13.389 2.684-.9 5.469-3.1 8.3-6.194a58.519 58.519 0 0 0 10.37-16.964c3.286-8.556.693-10.192-5.522-11.064s-13.417 2.366-19.348 7.574-5.93 6.597-4.38 13.259z"
+                                fill="#96a9b8" opacity=".388"
+                                transform="matrix(.97437006 .22495105 -.22495105 .97437006 14.362 0)" />
+                            <!--<g clip-path="url(#a)" transform="translate(0 1.156)">-->
+                            <!--    <path-->
+                            <!--        d="m18.333 17.748a37.384 37.384 0 0 0 13.342-4.3l-4.991-13.448s-6.444 4.467-13.342 4.3-13.342 4.31-13.342 4.31l4.991 13.444a37.394 37.394 0 0 1 13.343-4.306m-5.672-8.238a1.939 1.939 0 0 1 .207-.771 2.241 2.241 0 0 1 .528-.665 3.548 3.548 0 0 1 .832-.533l-.282-1.215a.21.21 0 0 1 0-.088.184.184 0 0 1 .053-.084.541.541 0 0 1 .136-.089 2.366 2.366 0 0 1 .242-.1 2.4 2.4 0 0 1 .307-.084.663.663 0 0 1 .2-.013.159.159 0 0 1 .115.062.365.365 0 0 1 .057.111l.258 1.144q.172-.032.367-.053a3.275 3.275 0 0 1 .372-.019 2.969 2.969 0 0 1 .326.02.706.706 0 0 1 .216.051.45.45 0 0 1 .11.074.466.466 0 0 1 .082.109 1.236 1.236 0 0 1 .08.168c.027.067.056.145.087.234.041.121.072.221.092.3a.685.685 0 0 1 .029.189.184.184 0 0 1 -.025.1.126.126 0 0 1 -.063.044.581.581 0 0 1 -.248 0c-.114-.019-.253-.032-.414-.043a4.629 4.629 0 0 0 -.547 0 2.432 2.432 0 0 0 -.636.131 2.17 2.17 0 0 0 -.5.235 1.031 1.031 0 0 0 -.295.283.682.682 0 0 0 -.114.318.841.841 0 0 0 .045.343.769.769 0 0 0 .3.412 1.328 1.328 0 0 0 .5.19 4.106 4.106 0 0 0 .633.059q.344.007.7.021a6.235 6.235 0 0 1 .721.071 2.373 2.373 0 0 1 .681.212 1.906 1.906 0 0 1 .581.442 2.134 2.134 0 0 1 .421.759 2.346 2.346 0 0 1 .13.966 2.137 2.137 0 0 1 -.269.867 2.658 2.658 0 0 1 -.631.735 3.957 3.957 0 0 1 -.947.57l.3 1.292a.231.231 0 0 1 0 .09.157.157 0 0 1 -.056.084.66.66 0 0 1 -.139.09 1.73 1.73 0 0 1 -.238.1 2.085 2.085 0 0 1 -.307.084.645.645 0 0 1 -.2.011.173.173 0 0 1 -.113-.056.225.225 0 0 1 -.049-.114l-.28-1.229a4.543 4.543 0 0 1 -.5.07 4.106 4.106 0 0 1 -.445.015 2.812 2.812 0 0 1 -.359-.031.942.942 0 0 1 -.246-.07.427.427 0 0 1 -.164-.166 2.09 2.09 0 0 1 -.161-.379c-.045-.132-.078-.243-.1-.331a.738.738 0 0 1 -.027-.213.2.2 0 0 1 .04-.12.205.205 0 0 1 .093-.061.518.518 0 0 1 .252.012 4.018 4.018 0 0 0 .44.066 3.75 3.75 0 0 0 .618.005 3.145 3.145 0 0 0 .793-.171 1.769 1.769 0 0 0 .931-.6.854.854 0 0 0 .1-.788.762.762 0 0 0 -.3-.413 1.391 1.391 0 0 0 -.491-.189 3.5 3.5 0 0 0 -.624-.062q-.338-.006-.7-.021a5.776 5.776 0 0 1 -.714-.077 2.485 2.485 0 0 1 -.678-.22 1.884 1.884 0 0 1 -.58-.452 2.237 2.237 0 0 1 -.424-.778 2.212 2.212 0 0 1 -.125-.848m6.134 11.497a37.392 37.392 0 0 0 -13.342 4.3l-4.501-12.124c-.183.118-.28.185-.28.185l4.99 13.445a37.392 37.392 0 0 1 13.343-4.306 37.409 37.409 0 0 0 13.342-4.3l-.5-1.344a37.361 37.361 0 0 1 -13.052 4.144m-.336-2.407a37.4 37.4 0 0 0 -13.344 4.301l-4.5-12.125c-.183.118-.28.184-.28.184l4.992 13.447a37.4 37.4 0 0 1 13.342-4.3 37.392 37.392 0 0 0 13.346-4.311l-.5-1.344a37.338 37.338 0 0 1 -13.053 4.145"-->
+                            <!--        fill="#001f37" />-->
+                            <!--</g>-->
+                            
+                            <image x="5" y="5" width="35" height="35" href="https://e72ytco4a87.exactdn.com/wp-content/uploads/2023/07/icon_team.svg" />
+                        </svg>
+                        <p x-show="hoverText==false" class=" text-center font-bold lg:text-[16px] whitespace-nowrap  ">
+                            कानूनी सहारा
+
+                        </p>
+                        <p x-show="hoverText"
+                            class=" text-center font-bold lg:text-[16px] whitespace-nowrap text-white  ">
+                            कानूनी सहारा
+
+                        </p>
+
+                        <p x-show="hoverText" class="text-center text-[14px] font-bold mt-3 text-white "> सड़क पर चिंता
+                            मुक्ति सुनिश्चित करने के लिए, जब भी आवश्यक हो, पेशेवर कानूनी सहायता का लाभ लें।
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ********************************* freedom control section end   **************************** -->
+
+        <!-- ********************************* GETTING STARTED SECTION START **************************** -->
+
+        <section id="services1" x-data="{id:1,x:0}"
+            class="lg:max-w-[1020px] lg:mx-auto  lg:py-[72px] max-sm:py-12 max-sm:px-4 relative ">
+            <div class="btn flex lg:mb-[72px] max-sm:mb-12  ">
+                <div @click="id=1" :class="id==1 ? 'bg-black text-white' :'bg-white text-black'"
+                    class="border border-black">
+                    <button class="px-3 py-2 font-bold max-sm:text-[14px]" type="button">प्रारंभ करें
+                    </button>
+                </div>
+                <div @click="id=2" :class="id==2 ? 'bg-black text-white' :'bg-white text-black'"
+                    class="border border-black">
+                    <button class="px-3 py-2 font-bold max-sm:text-[12px] " type="button">अतिरिक्त जानकारी
+                    </button>
+                </div>
+            </div>
+            <div class="  ">
+                <h1 class="font-bold lg:text-[#7a6161] text-[14px]">अपने शर्तों पर काम करें</h1>
+                <h1 class="font-bold lg:text-[36px] max-sm:text-[26px] max-sm:my-2 lg:mb-5">यह कैसे काम करता है</h1>
+            </div>
+            <div class=" lg:h-[515.15px] ">
+                <div x-show="id===1" x-transition:enter="transition transform duration-500 ease-in-out" x-transition:enter-start="translate-x-full opacity-0" x-transition:enter-end="translate-x-0 opacity-100" x-transition:leave="transition transform duration-500 ease-in-out" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"  class="flex max-sm:flex-col gap-10 lg:pl-12 max-sm:pl-0 ">
+                    <div class="flex-1 max-sm:order-2 space-y-8 max-w-[600px]">
+                        <div class="p">
+                            <h1 @mouseEnter="x=0" class="font-bold text-[20px]">अपना प्रोफ़ाइल बनाएं
+                            </h1>
+                            <p  class="font-medium">हमारे प्लेटफ़ॉर्म पर अपना प्रोफ़ाइल बनाने की शुरुआत करें। यह शुरू
+                                करने के
+                                लिए कुछ सरल चरणों की ज़रूरत है, जो तेज़ और आसान है। कॉल या मोबाइल एप्लिकेशन के माध्यम से
+                                साइनअप करें।
+
+                            </p>
+                        </div>
+                        <div  class="p">
+                            <h1 @mouseEnter="x=1" class="font-bold text-[20px]">प्रशिक्षण सत्र और सत्यापन
+                            </h1>
+                            <p class="font-medium">हमारे प्लेटफ़ॉर्म और नीतियों से अपने आप को परिचित करने के लिए एक
+                                व्यापक
+                                प्रशिक्षण सत्र में भाग लें। पूरा करने के बाद, हम आपके प्रमाण पत्रों की सत्यापन करेंगे,
+                                ताकि
+                                एक स्मूद ऑनबोर्डिंग प्रक्रिया सुनिश्चित हो।
+
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=2" class="font-bold text-[20px]">नौकरी के अवसरों पर अपडेट रहें
+                            </h1>
+                            <p class="font-medium">उपलब्ध नौकरी के बारे में वास्तविक समय में अपडेट प्राप्त करें, सीधे
+                                अपने मोबाइल एप्लिकेशन और व्हाट्सएप के माध्यम से। नए अवसरों के बारे में सूचित रहें जैसे
+                                ही वे उपलब्ध हों, जो आपको खेल के आगे रखेगा।
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=3" class="font-bold text-[20px]">तत्काल नौकरियाँ स्वीकार करें
+                            </h1>
+                            <p class="font-medium">हमारे साथ, आपको नौकरियाँ तत्काल स्वीकार करने की शक्ति है। जब आपको
+                                अपने समय और पसंद के अनुसार नौकरी की पेशकश मिलती है, तो बस एक बटन के टप से इसे स्वीकार
+                                करें और सड़क पर तैयार हो जाएं।
+
+                            </p>
+                        </div>
+                        <div class="btn bg-[#3c3838] text-white flex items-center gap-1 w-fit px-3 cursor-pointer">
+                            <button class=" py-2" type="button">FIND WORK NOW</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="max-sm:flex-1 flex justify-center  ">
+                        <div class="max-sm:order-1 relative ">
+                            <div class="relative ">         <img class=" lg:w-[255px] max-sm:w-[198px] " src="Phone-mockup-v3_om.png" alt=""></div>
+                            <div class=" absolute lg:top-[12px] lg:left-[14px] max-sm:top-[0] max-sm:left-[0] flex gap-2">
+                            
+                                <template  x-if="x === 0">
+                                    <div x-show="x===0" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%] max-md:h-[90%] max-sm:mx-auto  ">
+                                        <img class="rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-1.jpeg" alt="">
+                                    </div>
+                                </template> 
+                                <template x-if="x === 1">
+                                    <div x-show="x===1" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[493px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-2.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x === 2">
+                                    <div x-show="x===2" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-3.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x ===3">
+                                    <div x-show="x===3" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[96%]  max-sm:h-[90%] max-sm:mx-auto">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-4.jpg" alt="">
+                                    </div>
+                                </template>
+                             </div>
+                        </div>
+                       
+                </div>
+
+                </div>
+                <div x-show="id===2" class="flex max-sm:flex-col gap-10 pl-12 lg:max-w-[1230px] lg:mx-auto ">
+                    <div class=" flex-1 max-sm:order-2 space-y-8  max-w-[600px] ">
+                        <div class="p">
+                            <h1 @mouseEnter="x=0" class="font-bold text-[20px]">विश्वास बनाएं
+                            </h1>
+                            <p class="font-medium">हम अपने चालकों के साथ विश्वास बनाने और पारदर्शी संबंधों को बनाए रखने
+                                को
+                                प्राथमिकता देते हैं। आप एक विश्वसनीय और स्थिर प्लेटफ़ॉर्म का हिस्सा हैं।
+
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=1" class="font-bold text-[20px]">तेज़ी से पैसे पाएं
+
+                            </h1>
+                            <p class="font-medium">अपनी कमाई के लिए हफ्तों तक इंतजार को अलविदा कहें। Truckinzy के साथ,
+                                आपको
+                                तेज़ी से और सुरक्षित भुगतान मिलेगा, ताकि आपकी मेहनत तुरंत प्रोत्साहित की जा सके।
+
+
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=2" class="font-bold text-[20px]">वॉलेट और लेजर
+
+                            </h1>
+                            <p class="font-medium">हमारे एकीकृत वॉलेट और लेजर की सुविधा के साथ अपने वित्त को सरलता से
+                                प्रबंधित करें। अपनी कमाई, व्यय और लेन-देन को आसानी से ट्रैक करें, सभी Truckinzy
+                                प्लेटफ़ॉर्म
+                                के अंदर।
+
+
+                            </p>
+                        </div>
+                        <div class="p">
+                            <h1 @mouseEnter="x=3" class="font-bold text-[20px]">मोबाइल एप्लिकेशन के माध्यम से हमसे संपर्क करें
+
+                            </h1>
+                            <p class="font-medium">सहायता की आवश्यकता है या सवाल हैं? हमारे मोबाइल एप्लिकेशन के माध्यम
+                                से
+                                सीधे हमसे संपर्क करें। हमारी समर्पित सपोर्ट टीम हर कदम पर आपकी मदद के लिए यहाँ है।
+                            </p>
+                        </div>
+
+                        <div class="btn bg-[#3c3838] text-white flex items-center gap-1 w-fit px-3 cursor-pointer">
+                            <button class=" py-2" type="button">FIND WORK NOW</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-arrow-right">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="max-sm:flex-1 flex justify-center  ">
+                        <div class="max-sm:order-1 relative ">
+                            <div class="relative ">         <img class=" lg:w-[255px] max-sm:w-[198px] " src="Phone-mockup-v3_om.png" alt=""></div>
+                            <div class=" absolute lg:top-[12px] lg:left-[14px] max-sm:top-[0] max-sm:left-[0] flex gap-2">
+                            
+                                <template  x-if="x === 0">
+                                    <div x-show="x===0" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%] max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-1.jpeg" alt="">
+                                    </div>
+                                </template> 
+                                <template x-if="x === 1">
+                                    <div x-show="x===1" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[493px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto  ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-2.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x === 2">
+                                    <div x-show="x===2" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[90%]  max-sm:h-[90%] max-sm:mx-auto ">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="mobile-3.jpeg" alt="">
+                                    </div>
+                                </template>
+                                <template x-if="x ===3">
+                                    <div x-show="x===3" x-transition:enter="transition opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition opacity duration-500 ease-in-out" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full" class="lg:w-[228px] lg:h-[491px] max-sm:w-[96%]  max-sm:h-[90%] max-sm:mx-auto">
+                                        <img class="lg:rounded-[30px] max-sm:rounded-[25px] h-full w-full" src="./mobile-4.jpg" alt="">
+                                    </div>
+                                </template>
+                             </div>
+                        </div>
+                       
+                </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ********************************* GETTING STARTED SECTION END   **************************** -->
+
+
+        <!-- **************************  interested in full/part-time job section start *********************** -->
+
+        <section class="bg-[#2c2e5c] flex items-center  flex-col py-20 space-y-6">
+            <h1 class="text-center lg:text-[45px] text-white font-extrabold">पूरी/आंशिक समय की नौकरियों में रुचि है?
+
+
+            </h1>
+            <h1 class=" text-center text-white lg:text-[20px] font-bold">Truckinzy से जुड़ें
+
+
+            </h1>
+            <div class="btn bg-[#e83e3e] rounded-sm text-white flex items-center  justify-center gap-1 w-fit px-3 ">
+                <button class=" py-2 px-5 " type="button">हमसे संपर्क करें बटन
+                </button>
+            </div>
+        </section>
+
+        <!-- *******************  interested in full/part-time job section end  ********************** -->
+
+
+        <!-- ****************************** RESOURCES MADE FOR YOU section start  ********************* -->
+
+
+        <!--<div class="bg-gray-400">-->
+        <!--    <section class=" max-w-[1020px] mx-auto ">-->
+        <!--        <h1 class="text-black font-bold lg:text-[45px] max-sm:text-[25px] mb-[44px] lg:py-4 text-center">Need-->
+        <!--            some-->
+        <!--            extra help?-->
+        <!--        </h1>-->
+        <!--        <h1 class="font-bold text-[12px] pl-10 max-sm:text-center max-sm:font-extrabold max-sm:text-[20px]">HAVE-->
+        <!--            QUESTIONS</h1>-->
+        <!--        <section class=" max-sm:px-4  flex flex-col  max-sm:gap-3  lg:mx-auto justify-center  ">-->
+        <!--            <div class=" flex max-sm:flex-col lg:flex-row items-center gap-10">-->
+
+
+        <!--                <p class="max-w-[900px] max-sm:text-center mt-3">चाहे आप अपना प्रोफाइल सेट कर रहे हों, ऐप का-->
+        <!--                    उपयोग-->
+        <!--                    करना सीख रहे हों, या भुगतान प्राप्त करने का तरीका समझ रहे हों, Truckinzy हेल्प सेंटर आपको-->
+        <!--                    हमारी-->
+        <!--                    प्लेटफ़ॉर्म पर सफलता के लिए आवश्यक जानकारी प्रदान करता है। यदि आपके पास अभी भी प्रश्न हैं,-->
+        <!--                    तो-->
+        <!--                    Contact Support फॉर्म भरें, और हम आपकी आगे सहायता करेंगे।</p>-->
+        <!--                <div class="flex gap-3 mb-5 flex-col ">-->
+        <!--                    <div-->
+        <!--                        class="btn-1 gap-1 max-w-[300px] bg-black flex justify-center w-fit items-center text-white cursor-pointer px-3">-->
+        <!--                        <button class="py-3 text-[12px] font-bold whitespace-nowrap" type="button">SCHEDULE-->
+        <!--                            A CALL</button>-->
+        <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"-->
+        <!--                            fill="none" stroke="white" stroke-width="2" stroke-linecap="round"-->
+        <!--                            stroke-linejoin="round" class="feather feather-arrow-right">-->
+        <!--                            <line x1="5" y1="12" x2="19" y2="12"></line>-->
+        <!--                            <polyline points="12 5 19 12 12 19"></polyline>-->
+        <!--                        </svg>-->
+        <!--                    </div>-->
+        <!--                    <div-->
+        <!--                        class="btn-1 max-w-[300px]   gap-1  flex justify-center items-center text-black border border-black cursor-pointer px-3">-->
+        <!--                        <button class="py-3  text-[12px]  font-bold whitespace-nowrap  " type="button">HELP-->
+        <!--                            CENTER</button>-->
+        <!--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"-->
+        <!--                            fill="none" stroke="black" stroke-width="2" stroke-linecap="round"-->
+        <!--                            stroke-linejoin="round" class="feather feather-arrow-right">-->
+        <!--                            <line x1="5" y1="12" x2="19" y2="12"></line>-->
+        <!--                            <polyline points="12 5 19 12 12 19"></polyline>-->
+        <!--                        </svg>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
+        <!--    </section>-->
+        <!--</div>-->
+      <section class="lg:max-w-[1020px] lg:mx-auto py-10">
+    <h1 class="text-center lg:text-[45px] text-black font-extrabold">पायलट आवेदन फॉर्म</h1>
+    <form id="contact-form-hindi" class="grid gap-10 max-sm:grid-cols-1 lg:grid-cols-2 px-4 py-4" action="https://script.google.com/macros/s/AKfycbzd3zaJkTO_qBlRurGR4iLeqTdXBCndiGm2lZGDLIJ9I2A1eF8yVaAKNVJ8qsYGfA/exec" method="POST">
+        <input type="hidden" name="formType" value="hindi">
+        <div class="flex flex-col">
+            <label class="font-bold" for="first-name">पहला नाम *</label>
+            <input id="first-name" name="first-name" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="last-name">अंतिम नाम *</label>
+            <input id="last-name" name="last-name" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="license">ड्राइविंग लाइसेंस नंबर *</label>
+            <input id="license" name="license" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="phone">फोन नंबर *</label>
+            <input id="phone" name="phone" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold" for="city">शहर *</label>
+            <input id="city" name="city" class="bg-[#f7f8f8] py-4 mt-2" type="text" required>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-bold mb-2" for="state">राज्य *</label>
+            <select id="state" name="state" class="text-[20px] bg-[#f7f8f8] py-4" required>
+                <option value="">कृपया चयन करें</option>
+                <option value="आंध्र प्रदेश">आंध्र प्रदेश</option>
+                <option value="अरुणाचल प्रदेश">अरुणाचल प्रदेश</option>
+                <option value="असम">असम</option>
+                <option value="बिहार">बिहार</option>
+                <option value="छत्तीसगढ़">छत्तीसगढ़</option>
+                <option value="गोवा">गोवा</option>
+                <option value="गुजरात">गुजरात</option>
+                <option value="हरियाणा">हरियाणा</option>
+                <option value="हिमाचल प्रदेश">हिमाचल प्रदेश</option>
+                <option value="झारखंड">झारखंड</option>
+                <option value="कर्नाटक">कर्नाटक</option>
+                <option value="केरल">केरल</option>
+                <option value="मध्य प्रदेश">मध्य प्रदेश</option>
+                <option value="महाराष्ट्र">महाराष्ट्र</option>
+                <option value="मणिपुर">मणिपुर</option>
+                <option value="मेघालय">मेघालय</option>
+                <option value="मिजोरम">मिजोरम</option>
+                <option value="नगालैंड">नगालैंड</option>
+                <option value="ओडिशा">ओडिशा</option>
+                <option value="पंजाब">पंजाब</option>
+                <option value="राजस्थान">राजस्थान</option>
+                <option value="सिक्किम">सिक्किम</option>
+                <option value="तमिलनाडु">तमिलनाडु</option>
+                <option value="तेलंगाना">तेलंगाना</option>
+                <option value="त्रिपुरा">त्रिपुरा</option>
+                <option value="उत्तर प्रदेश">उत्तर प्रदेश</option>
+                <option value="उत्तराखंड">उत्तराखंड</option>
+                <option value="पश्चिम बंगाल">पश्चिम बंगाल</option>
+            </select>
+        </div>
+        <div class="bg-[#003b5c] text-white mt-[50px] w-fit">
+            <button id="submit-button" class="py-[10px] px-[20px] text-center rounded" type="submit">जमा करें</button>
+        </div>
+    </form>
+    <div id="notification" class="hidden text-center text-green-500 mt-4">फॉर्म सफलतापूर्वक जमा किया गया!</div>
+
+    <script>
+        document.getElementById('contact-form-hindi').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form)
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('notification').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('notification').classList.add('hidden');
+                        form.reset();
+                    }, 3000);
+                } else {
+                    console.error('Form submission failed.');
+                }
+            }).catch(error => {
+                console.error('Error!', error.message);
+            });
+        });
+    </script>
+</section>
+
+
+
+
+
+
+
+
+        <!-- ****************************** RESOURCES MADE FOR YOU section end ********************* -->
+
+        <!--************************ footer   section start ********************************* -->
+        <section id="contact-us" class="bg-[#333333] ">
+        <section class=" px-10 max-md:py-4 mt-28 lg:py-8 flex flex-col lg:gap-14 max-md:gap-5  md:flex-row lg:mx-auto  ">
+            <div class="main-1 lg:flex ">
+                <div class=" flex-1  mt-[20px] ">
+                    <div class="">
+                        <div class="w-60 h-14  ">
+                            <img class="cursor-pointer h-full lg:mt-[-15px]" src="newlogo-1.png" alt="">
+                        </div>
+                        <div class=" mt-5 ">
+                            <!-- <div class="">
+                                <h1 class="text-[#ffffff] font-bold ">About Us</h1>
+
+                            </div> -->
+                            <p class="text-[#ffffff] text-[15px] cursor-pointer  max-w-[30ch]  ">Truckinzy
+                                revolutionizes transportation with on-demand truck driver solutions. Founded by
+                                industry
+                                enthusiast, we bridge the gap between businesses and skilled drivers, redefining
+                                logistics..
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div x-data="{showIcon1:false,showIcon2:false,isShow:false}"
+                class="main-2 lg:flex flex-1 lg:text-center ">
+                <div class="flex-1  text-white  ">
+                    <div class="flex justify-between  ">
+                        <a href="#services" class="cursor-pointer font-bold lg:inline-block lg:mx-auto">FOR TRUCK
+                            OWNER </a>
+                        <div class="relative lg:hidden">
+                            <p x-show="!showIcon1" @click="showIcon1 = !showIcon1"> <svg
+                                    class="w-4 h-4 absolute top-0 left-0 fill-white"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                                </svg></p>
+                            <p @click="showIcon1 = !showIcon1" x-show="showIcon1"> <svg
+                                    class="w-4 h-4 fill-white absolute top-0 left-0"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                                </svg>
+                        </div>
+                    </div>
+                    <div class="acc-content" x-ref="container1"
+                        :style="showIcon1==true ? 'max-height: '+ $refs.container1.scrollHeight + 'px' : '' ">
+                        <a href="#pilot" class="mt-3 cursor-pointer block ">Truckinzy Pilot</a>
+                        <a href="/allblogs.html" class="mt-3 cursor-pointer block " target="_blank">Our Blog</a>
+
+                        <p class=" mt-3 cursor-pointer ">Contact Us</p>
+                        <p class="mt-3 cursor-pointer ">Language</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-1 ">
+                <h1 class="text-[#ffffff] text-md font-bold">DOWNLOAD THE APP</h1>
+                <p class="text-[#ffffff] mt-3 font-bold">HIRE WORKERS
+                </p>
+                <div class="flex gap-3 mt-3">
+                    <div class="  ">
+                        <a href="#"><img class=" h-[33.99px] object-cover" src="./google-play-badge-1.webp"
+                                alt=""></a>
+                    </div>
+                    <div class=" ">
+                        <a href="#"> <img class="  h-[33.99px] object-cover" src="./app-store-badge.webp"
+                                alt=""></a>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-[#ffffff] text-md font-bold mt-3">FIND WORK</h1>
+                    <div class="flex gap-3 mt-3">
+                        <div class=" ">
+                            <a href="#"> <img class="  h-[33.99px] object-cover" src="./google-play-badge-1.webp"
+                                    alt=""></a>
+                        </div>
+                        <div class="  h-[33.99px]  ">
+                            <a href="#"><img class=" h-[33.99px] object-cover" src="./app-store-badge.webp"
+                                    alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="flex-1 ">
+                    <h1 class="text-[#ffffff] text-md font-bold uppercase">Connect with us</h1>
+                    <p class="text-[#ffffff] mt-3">Email: <span
+                            class="text-[#ffffff]  cursor-pointer">business@truckinzy.com</span>
+                    </p>
+                    <p class="text-[#ffffff] max-w-[320px] mt-3">Address: <span class="text-[#ffffff] ">TDI mall,
+                            4th floor, Rajouri Garden, New Delhi</span>
+                    </p>
+                    <div class="flex items-center gap-3 mt-3 mb-5 ">
+                        <svg class="w-8 h-8 fill-none  stroke-white stroke-[25px]"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                        </svg>
+                        <div class="div">
+                            <p class="text-white">Call us now</p>
+                            <p class="text-white ">+91 9911022107</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 mt-5"> <a href="https://www.facebook.com/truckinzy.technology">
+                            <svg class="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/truckinzy/">
+                            <svg class="w-4 h-4  fill-white " xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512">
+                                <path
+                                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFlyU-XXTBpIQAAAY9hayGQSDNqSz5Ct63KJLggK2s02LJALP7wUVuEyjAUF_PDiht-WhmTYaYvhwidVnYOt2v7DCTMSITmjOuj_Gm8pJupR702z0eDYft3xUObuqUDU2IAxN0=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftruckinzy%2F">
+                            <svg class="w-4 h-4 fill-white " xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512">
+                                <path
+                                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="text-white flex lg:flex-row max-md:flex-col justify-between w-full  px-10 max-md:py-4 lg:py-6">
+            <div class="flex  lg:justify-center lg:items-center max-md:order-2">
+                <h1>2024 Truckinzy. ALL RIGHTS RESERVED.</h1>
+            </div>
+
+
+            <div class=" flex gap-5 max-md:order-1 ">
+                <a href="/pilottnc.html"  class="max-md:mb-3 cursor-pointer block  " target="_blank">Terms and
+                    Conditions</a>
+                <a href="/privacy.html" class="max-md:mb-3 cursor-pointer block  " target="_blank">Privacy
+                    Policy
+                </a>
+                <a href="/refund.html">
+                    <p class=" max-md:mb-3 cursor-pointer  ">Refund Policy</p>
+                </a>
+
+
+            </div>
+        </div>
+    </section>
+        <!--************************ footer   section end    ********************************* -->
+    </div>
+
+
+</body>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
+
+
+</html>
