@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Trip Analysis</h2>
+        <form id="fleetForm">
+            <div class="form-group">
+                <label for="vehicle-number">Vehicle Number</label>
+                <input type="text" id="vehicle-number" name="vehicle-number">
+            </div>
+
+            <div class="form-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Location</th>
+                            <th colspan="2">Truck In</th>
+                            <th colspan="2">Truck Out</th>
+                            <th rowspan="2">Total Running</th>
+                            <th rowspan="2">Total Time</th>
+                            <th rowspan="2">Total Fuel Consumed (Lt)</th>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Odometer Reading(km)</th>
+                            <th>Time</th>
+                            <th>Odometer Reading (km)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Loading Site</td>
+                            <td><input type="text" name="truckInTime1"></td>
+                            <td><input type="text" name="truckInOdometer1"></td>
+                            <td><input type="text" name="truckOutTime1"></td>
+                            <td><input type="text" name="truckOutOdometer1"></td>
+                            <td><input type="text" name="totalRunning1"></td>
+                            <td><input type="text" name="totalTime1"></td>
+                            <td><input type="text" name="totalFuel1"></td>
+                        </tr>
+                        <tr>
+                            <td>Unloading Site</td>
+                            <td><input type="text" name="truckInTime2"></td>
+                            <td><input type="text" name="truckInOdometer2"></td>
+                            <td><input type="text" name="truckOutTime2"></td>
+                            <td><input type="text" name="truckOutOdometer2"></td>
+                            <td><input type="text" name="totalRunning2"></td>
+                            <td><input type="text" name="totalTime2"></td>
+                            <td><input type="text" name="totalFuel2"></td>
+                        </tr>
+                        <tr>
+                            <td>Loading Site</td>
+                            <td><input type="text" name="truckInTime3"></td>
+                            <td><input type="text" name="truckInOdometer3"></td>
+                            <td><input type="text" name="truckOutTime3"></td>
+                            <td><input type="text" name="truckOutOdometer3"></td>
+                            <td><input type="text" name="totalRunning3"></td>
+                            <td><input type="text" name="totalTime3"></td>
+                            <td><input type="text" name="totalFuel3"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+
+            <div class="status-container">
+                <div class="status-section">
+                    <h3>Status - Loaded</h3>
+                    <div class="form-group">
+                        <label for="distance-loaded">Distance (km)</label>
+                        <input type="number" id="distance-loaded" name="distance-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="time-loaded">Running Time</label>
+                        <input type="text" id="time-loaded" name="time-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="fuel-loaded">Fuel Consumed</label>
+                        <input type="text" id="fuel-loaded" name="fuel-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="idle-time-loaded">Idle Time</label>
+                        <input type="text" id="idle-time-loaded" name="idle-time-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="top-speed-loaded">Top Speed</label>
+                        <input type="text" id="top-speed-loaded" name="top-speed-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="night-drive-loaded">Night Drive</label>
+                        <input type="text" id="night-drive-loaded" name="night-drive-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="harsh-acceleration-loaded">Harsh Acceleration</label>
+                        <input type="text" id="harsh-acceleration-loaded" name="harsh-acceleration-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="harsh-breaking-loaded">Harsh Breaking</label>
+                        <input type="text" id="harsh-breaking-loaded" name="harsh-breaking-loaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity-loaded">Quantity</label>
+                        <input type="number" id="quantity-loaded" name="quantity-loaded">
+                    </div>
+                    <h3>Engine Loads (percentage)</h3>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="light-load-loaded">Light</label>
+                            <input type="number" id="light-load-loaded" name="light-load-loaded">
+                        </div>
+                        <div class="form-group">
+                            <label for="medium-load-loaded">Medium</label>
+                            <input type="number" id="medium-load-loaded" name="medium-load-loaded">
+                        </div>
+                        <div class="form-group">
+                            <label for="heavy-load-loaded">Heavy</label>
+                            <input type="number" id="heavy-load-loaded" name="heavy-load-loaded">
+                        </div>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <h3>Status - Unloaded</h3>
+                    <div class="form-group">
+                        <label for="distance-unloaded">Distance (km)</label>
+                        <input type="number" id="distance-unloaded" name="distance-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="time-unloaded">Running Time</label>
+                        <input type="text" id="time-unloaded" name="time-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="fuel-unloaded">Fuel Consumed</label>
+                        <input type="text" id="fuel-unloaded" name="fuel-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="idle-time-unloaded">Idle Time</label>
+                        <input type="text" id="idle-time-unloaded" name="idle-time-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="top-speed-unloaded">Top Speed</label>
+                        <input type="text" id="top-speed-unloaded" name="top-speed-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="night-drive-unloaded">Night Drive</label>
+                        <input type="text" id="night-drive-unloaded" name="night-drive-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="harsh-acceleration-unloaded">Harsh Acceleration</label>
+                        <input type="text" id="harsh-acceleration-unloaded" name="harsh-acceleration-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="harsh-breaking-unloaded">Harsh Breaking</label>
+                        <input type="text" id="harsh-breaking-unloaded" name="harsh-breaking-unloaded">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity-unloaded">Quantity</label>
+                        <input type="number" id="quantity-unloaded" name="quantity-unloaded">
+                    </div>
+                    <h3>Engine Loads (percentage)</h3>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="light-load-unloaded">Light</label>
+                            <input type="number" id="light-load-unloaded" name="light-load-unloaded">
+                        </div>
+                        <div class="form-group">
+                            <label for="medium-load-unloaded">Medium</label>
+                            <input type="number" id="medium-load-unloaded" name="medium-load-unloaded">
+                        </div>
+                        <div class="form-group">
+                            <label for="heavy-load-unloaded">Heavy</label>
+                            <input type="number" id="heavy-load-unloaded" name="heavy-load-unloaded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="submit-button" onclick="submitForm()">Submit</button>
+                <button type="reset" class="reset-button">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script src="server.js"></script>
+</body>
+</html>
+
+
+
+
